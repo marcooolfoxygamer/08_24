@@ -63,3 +63,9 @@ class CancionSchema(SQLAlchemyAutoSchema):
         model = Cancion
         include_relationships = True
         load_instance = True
+
+class UsuarioSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Usuario
+        include_relationships = True
+        load_instance = True
