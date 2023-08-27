@@ -117,3 +117,12 @@ class VistaUsuario(Resource):
         db.session.commit()
         return 'Operacion existosa', 204
 
+
+## Clase con ruta adicional, creada con el propósito de listar las canciones que le correspondan al album pasado por parámetro
+class VistaAlbumesCanciones(Resource):
+    def get(self,albumes):
+        alb = Album.query.get(albumes)
+        canciones = alb.canciones
+
+        lista = [ c.titulo for c in canciones ]
+        return {'canciones del album':lista}

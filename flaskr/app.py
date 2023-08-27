@@ -2,7 +2,7 @@ from flaskr import create_app
 from .modelos import db, Cancion, Album, Usuario, Medio, albumes_canciones
 from .modelos import AlbumSchema, CancionSchema, UsuarioSchema
 from flask_restful import Api
-from .vistas import VistaCanciones, VistaCancion, VistaAlbumes, VistaAlbum, VistaUsuarios, VistaUsuario
+from .vistas import VistaCanciones, VistaCancion, VistaAlbumes, VistaAlbum, VistaUsuarios, VistaUsuario, VistaAlbumesCanciones
 
 app = create_app("default")
 app_context = app.app_context()
@@ -18,7 +18,9 @@ api.add_resource(VistaAlbumes,'/albums')
 api.add_resource(VistaAlbum,'/albums/<int:id_album>')
 api.add_resource(VistaUsuarios,'/usuarios')
 api.add_resource(VistaUsuario,'/usuarios/<int:id_usuario>')
+api.add_resource(VistaAlbumesCanciones,'/canciones/albums/<int:albumes>')
 
+# Codigo prueba de que inserta y consulta datos correctamente (así como se pueden hacer más operaciones y funciona bien)
 """
 with app.app_context():
     # Usuario
@@ -43,8 +45,8 @@ with app.app_context():
     db.session.add(C)
     db.session.add(C2)
 
-    A_C = albumes_canciones(album_id=1,cancion_id=1)
-    db.session.add(A_C)
+    #A_C = albumes_canciones(album_id=1,cancion_id=1)
+    #db.session.add(A_C)
 
     db.session.commit()
 
